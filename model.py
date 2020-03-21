@@ -51,8 +51,8 @@ class Model(object):
             float -- Speed of motor1 (m/s), speech of motor2 (m/s)
         """
         # TODO
-        da = linear_speed + (L*rotational_speed)/2
-        db = linear_speed - (L*rotational_speed)/2
+        da = linear_speed + (self.l*rotational_speed)/2
+        db = linear_speed - (self.l*rotational_speed)/2
 
         m1_speed = da
         m2_speed = db
@@ -74,10 +74,9 @@ class Model(object):
             m1_speed = self.m1.speed
         if m2_speed is None:
             m2_speed = self.m2.speed
-        print(m1_speed)
-        print(m2_speed)
+
         dp = (m1_speed + m2_speed)/2
-        dteta = (m1_speed - m2_speed)/L
+        dteta = (m1_speed - m2_speed)/self.l
 
         linear_speed = dp
         rotation_speed = dteta
@@ -96,10 +95,10 @@ class Model(object):
         linear_speed, rotation_speed = self.dk()
 
         # TODO
+        x = dt*linear_speed*math.cos(self.theta + rotation_speed)
+        y = dt*linear_speed*math.sin(self.theta + rotation_speed)
 
         # Updating the robot position
-        # self.x = self.x + 0  # TODO
-        # self.y = self.y + 0  # TODO
-        # self.theta = self.theta + 0  # TODO
-
-        #self.x = self.x +
+        self.x = self.x + x  # TODO
+        self.y = self.y + y  # TODO
+        self.theta = self.theta + rotation_speed
