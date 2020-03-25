@@ -270,7 +270,8 @@ class SimpleRobotControl:
 
         # Proportional asserv
         local_speed = distance
-        local_turn = diff_angle
+        # print(f"Distance : {distance}")
+        local_turn = diff_angle/local_speed
 
         m1_speed, m2_speed = m.ik(local_speed, local_turn)
         m.m1.speed = m1_speed
