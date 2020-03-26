@@ -1,3 +1,4 @@
+pytest==5.4.1
 actionlib==1.12.0
 angles==1.9.12
 base-local-planner==1.16.3
