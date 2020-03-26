@@ -4,15 +4,15 @@
 A simple simulator to explore direct and inverse kinematics for a differential wheeled robot
 
 ![](images/demo.gif)
- 
+
 ## Install
 Tested with Python 3.6 but should work as long as pygame is installed.
 ```
 pip install pygame
 ```
 
-## Usage 
-``` 
+## Usage
+```
 python main.py
 ```
 Keys:
@@ -23,4 +23,10 @@ mouse: goal position
 arrows: wheel speed control
 space: speed 0 to wheels
 a: artist toggle
+```
+
+## Test
+Run
+```
+pytest test.py
 ```
