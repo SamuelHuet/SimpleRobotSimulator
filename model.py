@@ -96,11 +96,10 @@ class Model(object):
 
         # TODO
         dtheta = dt * rotation_speed
-        x = dt * linear_speed * math.cos(self.theta)
+        x = dt * linear_speed * math.cos(self.theta)  # abscisse curviligne
         y = dt * linear_speed * math.sin(self.theta)
         dx = x*math.cos(dtheta) - y*math.sin(dtheta)
         dy = x*math.sin(dtheta) + y*math.cos(dtheta)
-
 
         # Updating the robot position
         self.x = self.x + dx  # TODO

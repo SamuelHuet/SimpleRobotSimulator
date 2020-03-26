@@ -256,6 +256,12 @@ class SimpleRobotControl:
         )
 
         # TODO
+        # Tolerance
+        if distance <= XY_TOL:
+            m.m1.speed = 0
+            m.m2.speed = 0
+            return 0
+
         # x, y relative to the robot
         x = m.x_goal - m.x
         y = m.y_goal - m.y
@@ -270,8 +276,7 @@ class SimpleRobotControl:
 
         # Proportional asserv
         local_speed = distance
-        # print(f"Distance : {distance}")
-        local_turn = diff_angle/local_speed
+        local_turn = diff_angle/distance
 
         m1_speed, m2_speed = m.ik(local_speed, local_turn)
         m.m1.speed = m1_speed
